@@ -93,7 +93,6 @@ function handleForecastData(data) {
 export default function getWeather(city) {
   return axios.all([getCurrentWeather(city), getForecastWeather(city)])
     .then(function(response) {
-      console.log(response);
       return {
         currentTemp: roundTemps(response[0].data.main.temp),
         currentWeather: 'app/images/weather-icons/' + response[0].data.weather[0].icon + '.svg',
