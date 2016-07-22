@@ -18,7 +18,7 @@ module.exports = {
   module: {
     loaders: [
       {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
-      {test: /\.css$/, loader: 'style-loader!css-loader'},
+      {test: /\.scss$/, loaders: ['style', 'css', 'sass']},
       {test: /\.(jpg|png)$/, loader: 'file?name=[path][name].[hash].[ext]'},
       {test: /\.svg$/, loader: 'file'}
     ]

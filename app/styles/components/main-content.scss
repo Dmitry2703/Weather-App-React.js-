@@ -1,0 +1,8 @@
+.main-content {
+  height: 100%;
+  padding-top: 18.1rem;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 6.4rem;
+  }
+}
