@@ -1,30 +1,34 @@
 /**
- * @fileOverview Компонент детального прогноза погоды для выбранного дня
+ * @fileOverview Компонент детального прогноза погоды
  * @author Dmitry Meshcheryakov (dmitri.meshcheryakov@gmail.com)
  */
 
 import React from 'react';
+import Loading from './Loading';
 const PropTypes = React.PropTypes;
 
 export default function Detail(props) {
   return (
-    <div className="text-center">
-      <div className="title-wrapper">
-        <h1 className="title">{props.header}</h1>
-        <img src={props.forecastWeather.weather[0].icon} height="55"/>
+    props.isLoading === true
+    ? <Loading />
+    : <div className="text-center">
+        <div className="title-wrapper">
+          <h1 className="title">{props.header}</h1>
+          <img src={props.weather.weather[0].icon} height="55"/>
+        </div>
+        <ul className="list">
+          <li className="list__item">{props.weather.dt}</li>
+          <li className="list__item">{props.weather.weather[0].description}</li>
+          <li className="list__item">Min. temperature: {props.weather.temp.min} &deg;C</li>
+          <li className="list__item">Max. temperature: {props.weather.temp.max} &deg;C</li>
+          <li className="list__item">Humidity: {props.weather.humidity} %</li>
+        </ul>
       </div>
-      <ul className="list">
-        <li className="list__item">{props.forecastWeather.dt}</li>
-        <li className="list__item">{props.forecastWeather.weather[0].description}</li>
-        <li className="list__item">Min. temperature: {props.forecastWeather.temp.min} &deg;C</li>
-        <li className="list__item">Max. temperature: {props.forecastWeather.temp.max} &deg;C</li>
-        <li className="list__item">Humidity: {props.forecastWeather.humidity} %</li>
-      </ul>
-    </div>
   );
 }
 
 Detail.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
   header: PropTypes.string.isRequired,
-  forecastWeather: PropTypes.object.isRequired
+  weather: PropTypes.object.isRequired
 };

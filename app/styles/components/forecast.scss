@@ -1,0 +1,28 @@
+.forecast-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  @media screen and (min-width: 768px) {
+    letter-spacing: -0.3em;
+  }
+
+  &__item {
+    margin: 3rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    @media screen and (min-width: 768px) {
+      display: inline-block;
+      vertical-align: middle;
+      letter-spacing: normal;
+    }
+  }
+
+  &__item:hover img {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+  }
+}
